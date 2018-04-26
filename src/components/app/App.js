@@ -1,0 +1,31 @@
+import React, { Component } from 'react';
+import './App.scss';
+
+class App extends Component {
+  render() {
+    return (
+      <div className="module">
+        <header>
+        <form>
+             <h1><label htmlFor="searchLocation">Find a hospital:</label>
+               <p>Showing results for </p>
+               <p className="zipcode-label"></p>
+             </h1>
+             <div className="form-group search-group">
+               <input name="searchLocation" className="form-control search" type="text" placeholder="enter address, city or postal code" />
+               <i className="fa fa-search"></i>
+             </div>
+         </form>
+         <div className="form-group search-group view-map">
+             <button>View Map</button>
+           </div>
+           <div>
+               
+           </div>
+        </header>
+      </div>
+    );
+  }
+}
+
+export default App;

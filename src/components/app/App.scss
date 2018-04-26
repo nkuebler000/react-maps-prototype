@@ -1,0 +1,12 @@
+.view-map {
+    display: none !important;
+  
+    @media (max-width: 768px) {
+      display: block !important;
+      button {
+        display: block;
+        margin: auto;
+      }
+    }
+  }
+  
