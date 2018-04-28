@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './App.scss';
 import Filter from '../filter/Filter';
 import Results from '../results/Results';
+import Map from '../map/Map';
 
 class App extends Component {
   render() {
@@ -27,7 +28,7 @@ class App extends Component {
         </header>
         <div className="app-container">
           <div className="app-map-container">
-          map here
+            <Map/>
           </div>
           <div className="listing-container">
           <Results/>
