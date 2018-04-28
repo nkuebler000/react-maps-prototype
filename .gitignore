@@ -22,3 +22,5 @@ yarn-error.log*
 
 #dev-server
 dev-server/providers/**/cache.html
+
+.idea
