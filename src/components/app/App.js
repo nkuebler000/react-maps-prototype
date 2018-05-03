@@ -3,6 +3,8 @@ import './App.scss';
 import Filter from '../filter/Filter';
 import Results from '../results/Results';
 import Map from '../map/Map';
+import { connect } from 'react-redux';
+import { geocode } from '../../redux/actions/geocode';
 
 class App extends Component {
   render() {
@@ -39,4 +41,11 @@ class App extends Component {
   }
 }
 
-export default App;
+const mapStateToProps = state => {
+  const { geocode } = state;
+  return {
+    geocode
+  }
+};
+
+export default connect(mapStateToProps)(App);
