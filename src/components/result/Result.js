@@ -4,7 +4,7 @@ import './Result.scss';
 class Result extends Component {
   render(){
     return (
-      <div className="hospital-info-block hospital-info-block{{hospital.Index}}">
+      <div className="hospital-info-block">
         <div className="marker">
           <div className="cc-marker pin-location" > <span>{this.props.idx}</span> </div>
         </div>
