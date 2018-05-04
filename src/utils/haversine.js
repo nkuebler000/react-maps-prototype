@@ -3,7 +3,7 @@ const toRad = (num) => {
   return num * Math.PI / 180;
 };
 
-const calculate = (startLat,startLng,endLat,endLng,unit)=>{
+const haversine = (startLat,startLng,endLat,endLng,unit)=>{
   const radii = {
     km: 6371,
     mile: 3960,
@@ -26,4 +26,4 @@ const calculate = (startLat,startLng,endLat,endLng,unit)=>{
   return R * c;
 };
 
-export default calculate;
+export  { haversine };

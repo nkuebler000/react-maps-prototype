@@ -33,6 +33,14 @@ module.exports = {
 
     let reactScriptTags = fs.readFileSync(`${__dirname}/templates/script-template.html`, 'utf8');
 
+    if (userLat && userLng /*&& typeof userLat === 'number' && typeof userLng == 'number'*/) {
+      reactScriptTags = reactScriptTags.replace(/'UserLat'/g, userLat);
+      reactScriptTags = reactScriptTags.replace(/'UserLng'/g, userLng);
+    } else {
+      //Toronto by default
+      reactScriptTags = reactScriptTags.replace(/'UserLat'/g, 43.639217);
+      reactScriptTags = reactScriptTags.replace(/'UserLng'/g, -79.400414);
+    }
     
 
     $('body').append(reactScriptTags);

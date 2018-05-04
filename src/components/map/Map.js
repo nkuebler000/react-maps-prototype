@@ -15,8 +15,8 @@ const GMap = compose(
 )((props) =>
   <GoogleMap
     defaultZoom={8}
-    defaultCenter={{ lat: -34.397, lng: 150.644 }} >
-    {props.isMarkerShown && <Marker position={{ lat: -34.397, lng: 150.644 }} />}
+    center={props.mapCenter}
+  >
   </GoogleMap>
 );
 
@@ -25,7 +25,7 @@ class Map extends Component {
     return (
       <div className="map-container">
         <button className="map-view-list animated">View List</button>
-        <GMap />
+        <GMap mapCenter={this.props.mapCenter} />
       </div>
     );
   }
