@@ -6,7 +6,9 @@ import Results from '../results/Results';
 import ResultsFor from './ResultsFor';
 import Map from '../map/Map';
 import { geocode } from '../../redux/actions/geocode';
+import { getHospitals } from '../../redux/actions/hospitals';
 import { haversine } from '../../utils/haversine';
+import { getBounds } from '../../utils/getBounds';
 
 const initialMarket = (AppComponent) => {
   const userLat = window['FindAHospitalSettings']['UserLat'];
@@ -37,6 +39,7 @@ class App extends Component {
 
     this.searchOnSubmit = this.searchOnSubmit.bind(this);
     this.searchOnChange = this.searchOnChange.bind(this);
+    this.doSearch = this.doSearch.bind(this);
   }
 
   static getDerivedStateFromProps(nextProps, prevState) {
@@ -58,6 +61,23 @@ class App extends Component {
 
   searchOnChange(event) {
     this.setState({searchValue: event.target.value});
+  }
+
+  doSearch(lat, lng, resultCount){
+    const bounds = getBounds(lat, lng, window['FindAHospitalSettings']['MaximumRadius']);
+    if (bounds) {
+      this.props.dispatch(getHospitals({
+        minLatitude: bounds.getNorthEast().lat(),
+        maxLatitude: bounds.getSouthWest().lat(),
+        minLongitude: bounds.getNorthEast().lng(),
+        maxLongitude: bounds.getSouthWest().lng(),
+        corpCountry: window['FindAHospitalSettings']['CorpCountry'],
+        getMoreCount: window['FindAHospitalSettings']['GetMoreCount'],
+        resultCount: resultCount,
+        currentHospitalType: [window['FindAHospitalSettings']['HospitalTypes'][0].id]
+      }));
+    }
+
   }
 
   render() {

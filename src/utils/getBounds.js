@@ -1,5 +1,5 @@
 
-const getBounds = (lat,lng,radius)=>{
+const getBounds = (lat,lng,radius) => {
   const circleData = {
     center: { lat, lng },
     radius: radius * 1609.34
@@ -11,4 +11,4 @@ const getBounds = (lat,lng,radius)=>{
 
 };
 
-export default getBounds;
+export { getBounds };
