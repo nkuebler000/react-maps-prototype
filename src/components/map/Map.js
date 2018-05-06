@@ -60,8 +60,14 @@ class MapComponent extends Component {
         <GoogleMap
           defaultZoom={8}
           center={this.props.mapCenter}
-          ref="map"
-        >
+          options={{
+            zoomControl: true,
+            mapTypeControl: false,
+            scaleControl: false,
+            streetViewControl: false,
+            rotateControl: false,
+            fullscreenControl: false }}
+          ref="map" >
           {this.props.hospitals.map((hospitalItem,idx) => {
             return (
               <Marker
@@ -78,7 +84,16 @@ class MapComponent extends Component {
                   this.setState({ hospitals });
                 }}
               >
-                {this.state.hospitals[idx] && this.state.hospitals[idx].iwOpen && <InfoWindow key={idx}><div>test</div></InfoWindow>}
+                {this.state.hospitals[idx] && this.state.hospitals[idx].iwOpen &&
+                  <InfoWindow key={idx}>
+                    <div>
+                      <div>{hospitalItem.Name}</div>
+                      <div>{hospitalItem.AddressBlock1}</div>
+                      <div>{hospitalItem.AddressBlock2} {hospitalItem.Zipcode}</div>
+                      <div><a href={`tel:${hospitalItem.Phone}`}>{hospitalItem.Phone}</a></div>
+                      <div>{hospitalItem.OpenStatusLabel}</div>
+                    </div>
+                  </InfoWindow>}
               </Marker>
             );
           })}

@@ -4,7 +4,7 @@ import { compose, withProps } from 'recompose';
 import { withScriptjs } from 'react-google-maps';
 import './App.scss';
 import Filter from '../filter/Filter';
-import Results from '../results/Results';
+import Result from '../result/Result';
 import ResultsFor from './ResultsFor';
 import Map from '../map/Map';
 import { geocode } from '../../redux/actions/geocode';
@@ -106,7 +106,6 @@ class App extends Component {
         currentHospitalType: [window['FindAHospitalSettings']['HospitalTypes'][0].id]
       }));
     }
-
   }
 
   render() {
@@ -128,10 +127,19 @@ class App extends Component {
     }
 
     const hospitalsProp = this.props.hospitals;
+    let totalResults = 0;
     hospitals=[];
     if (hospitalsProp && hospitalsProp.hospitalInfo) {
       hospitals = hospitalsProp.hospitalInfo.Hospitals;
+      totalResults = hospitalsProp.hospitalInfo.TotalResults;
     }
+    console.log('totalResults', totalResults);
+
+    let results = [];
+    hospitals.forEach((item,idx)=>{
+      results.push(<Result key={idx} idx={idx+1} hospital={item} />);
+    });
+
 
     return (
       <div className="module">
@@ -165,7 +173,20 @@ class App extends Component {
             <Map mapCenter={coordinates} hospitals={hospitals} />
           </div>
           <div className="listing-container">
-            <Results hospitals={hospitals} />
+            <div className="tab-content" aria-live="polite">
+              <div role="tabpanel" className="tab-pane fade active in" id="fah-tabpanel0">
+                <div className="location-list">
+                  {results}
+                  <div className="load-more">
+                    {hospitals.length < totalResults && <a href="#" onClick={(event) => {
+                      event.preventDefault();
+                      this.doSearch(coordinates.lat, coordinates.lng, hospitals.length);
+                    }}>Load More +</a> }
+                  </div>
+                  {hospitals.length === 0 && <div className="no-results">No results were found. Please try another location.</div>}
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>

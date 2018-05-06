@@ -9,10 +9,11 @@ const startGetHospitals = () => {
   }
 };
 
-const endGetHospitals = (hospitalInfo) => {
+const endGetHospitals = (hospitalInfo, resultCount) => {
   return {
     type: END_GET_HOSPITALS,
-    hospitalInfo
+    hospitalInfo,
+    resultCount
   }
 };
 
@@ -41,7 +42,7 @@ const getHospitals = (params) => {
         'content-type': 'application/x-www-form-urlencoded;charset=UTF-8'
       },
     }).then(response => response.json())
-      .then(json => dispatch(endGetHospitals(json)));
+      .then(json => dispatch(endGetHospitals(json, params.resultCount)));
   };
 };
 
