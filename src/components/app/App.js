@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { compose, withProps } from 'recompose';
+import { withScriptjs } from 'react-google-maps';
 import './App.scss';
 import Filter from '../filter/Filter';
 import Results from '../results/Results';
@@ -27,6 +29,17 @@ const initialMarket = (AppComponent) => {
   return props => <AppComponent {...props} initialMarket = {initialMarket} />;
 };
 
+const initialMarketWithScript = compose(
+  withProps({
+    googleMapURL: `https://maps.googleapis.com/maps/api/js?key=${window.FindAHospitalSettings.GMapsAPIKey}`,
+    loadingElement: <div />,
+  }),
+  withScriptjs,
+)((props) => {
+  return initialMarket(App)(props);
+});
+
+
 class App extends Component {
 
   constructor(props) {
@@ -47,6 +60,22 @@ class App extends Component {
       return { geocodeInfo: nextProps.geocode.geocodeInfo };
     }
     return null;
+  }
+
+  componentDidMount(){
+    const market = this.props.initialMarket;
+    this.doSearch(market.Latitude, market.Longitude, 0);
+  }
+
+  componentDidUpdate(prevProps, prevState, snapshot) {
+    const oldGeo = prevState.geocodeInfo;
+    const newGeo = this.state.geocodeInfo;
+    if (oldGeo && newGeo && oldGeo.place_id !== newGeo.place_id) {
+      this.doSearch(newGeo.geometry.location.lat(), newGeo.geometry.location.lng(), 0);
+    }
+    if (!oldGeo && newGeo) {
+      this.doSearch(newGeo.geometry.location.lat(), newGeo.geometry.location.lng(), 0);
+    }
   }
 
   searchOnSubmit(event) {
@@ -82,7 +111,7 @@ class App extends Component {
 
   render() {
 
-    let coordinates, addressComponents;
+    let coordinates, addressComponents, hospitals;
     const initialMarket = this.props.initialMarket;
     if (initialMarket) {
       coordinates = { lat: initialMarket.Latitude, lng: initialMarket.Longitude };
@@ -96,6 +125,12 @@ class App extends Component {
         const location = info.geometry.location;
         coordinates = { lat: location.lat(), lng: location.lng() };
       }
+    }
+
+    const hospitalsProp = this.props.hospitals;
+    hospitals=[];
+    if (hospitalsProp && hospitalsProp.hospitalInfo) {
+      hospitals = hospitalsProp.hospitalInfo.Hospitals;
     }
 
     return (
@@ -127,10 +162,10 @@ class App extends Component {
         </header>
         <div className="app-container">
           <div className="app-map-container">
-            <Map mapCenter={coordinates} />
+            <Map mapCenter={coordinates} hospitals={hospitals} />
           </div>
           <div className="listing-container">
-            <Results/>
+            <Results hospitals={hospitals} />
           </div>
         </div>
       </div>
@@ -139,10 +174,11 @@ class App extends Component {
 }
 
 const mapStateToProps = state => {
-  const { geocode } = state;
+  const { geocode, hospitals } = state;
   return {
-    geocode
+    geocode,
+    hospitals
   }
 };
 
-export default connect(mapStateToProps)(initialMarket(App));
+export default connect(mapStateToProps)(initialMarketWithScript);

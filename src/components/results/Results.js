@@ -6,8 +6,11 @@ class Results extends Component {
   render(){
 
     let results = [];
-    for (let x = 1; x < 8; x++) {
-      results.push(<Result key={x} idx={x}/>);
+
+    if (this.props.hospitals) {
+      this.props.hospitals.forEach((item,idx)=>{
+        results.push(<Result key={idx} idx={idx+1} hospital={item} />);
+      });
     }
 
     return(

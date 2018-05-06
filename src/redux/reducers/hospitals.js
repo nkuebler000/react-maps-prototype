@@ -11,9 +11,10 @@ const hospitals = (
         isFetching: true
       });
     case END_GET_HOSPITALS:
+      console.log('END_GET_HOSPITALS', action);
       return Object.assign({}, state, {
         isFetching: false,
-        hospitalInfo: action.geocodeInfo
+        hospitalInfo: action.hospitalInfo
       });
     default:
       return state;

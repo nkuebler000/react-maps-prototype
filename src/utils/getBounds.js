@@ -6,7 +6,7 @@ const getBounds = (lat,lng,radius) => {
   };
 
   if (window['google']) {
-    return window['google'].maps.Circle(circleData).getBounds();
+    return new window['google'].maps.Circle(circleData).getBounds();
   }
 
 };
