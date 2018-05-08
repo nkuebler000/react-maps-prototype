@@ -47,7 +47,8 @@ class App extends Component {
     this.state = {
       searchValue: '',
       resultsFor: '',
-      geocodeInfo: null
+      geocodeInfo: null,
+      selectedFilters: [ window['FindAHospitalSettings']['AllHospitalsType'] ]
     };
 
     this.searchOnSubmit = this.searchOnSubmit.bind(this);
@@ -128,12 +129,6 @@ class App extends Component {
 
 
     const filterItems = window['FindAHospitalSettings']['HospitalTypes'];
-    let filters = [];
-    filterItems.forEach((filterItem, idx) => filters.push(<FilterItem filter={filterItem} key={idx} onClick={(event) => {
-      event.preventDefault();
-      //this.doSearch(coordinates.lat, coordinates.lng, hospitals.length);
-      console.log(filterItem);
-    }} />));
 
     const hospitalsProp = this.props.hospitals;
     let totalResults = 0;
@@ -176,9 +171,44 @@ class App extends Component {
             <div className="fa-tabs">
               <ul className="nav nav-tabs" role="tablist">
                 {filterItems.map((filterItem, idx) => {
-                  return <FilterItem filter={filterItem} key={idx} onClick={(event)=>{
-                    event.preventDefault();
-                    console.log('FilterItem click', event);
+                  return <FilterItem filter={filterItem} key={idx} selectedFilters={this.state.selectedFilters} onClick={(item)=>{
+
+                    const selectedFilters = this.state.selectedFilters;
+
+                    //remove the all hospitals filter when selecting on of the others
+                    const allHospitalsId = window['FindAHospitalSettings']['AllHospitalsType'];
+                    if (item.id !== allHospitalsId) {
+                      const allHospitalsIndex = selectedFilters.indexOf(allHospitalsId);
+                      if (allHospitalsIndex != -1) {
+                        selectedFilters.splice(allHospitalsIndex, 1)
+                        this.setState({
+                          selectedFilters: selectedFilters
+                        });
+                      }
+                    }
+
+                    //when selecting the all hospitals filter deselect all the other filters
+                    if (item.id === allHospitalsId) {
+                      this.setState({
+                        selectedFilters: [allHospitalsId]
+                      });
+                      return;
+                    }
+
+                    const index = selectedFilters.indexOf(item.id);
+                    if (index === -1) {
+                      selectedFilters.push(item.id);
+                      this.setState({
+                        selectedFilters: selectedFilters
+                      });
+                    } else {
+                      if (selectedFilters.length !== 1) {
+                        selectedFilters.splice(index, 1);
+                        this.setState({
+                          selectedFilters: selectedFilters
+                        });
+                      }
+                    }
                   }} />
                 })}
               </ul>
