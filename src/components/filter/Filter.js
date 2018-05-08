@@ -1,41 +1,20 @@
 import React, { Component } from 'react';
+import FilterItem from './FilterItem';
 import './Filter.scss';
 
 class Filter extends Component {
   render() {
+
+    const filterItems = window['FindAHospitalSettings']['HospitalTypes'];
+    let filters = [];
+    filterItems.forEach(filterItem => filters.push(<FilterItem filter={filterItem} />));
+
     return (
       <div className="fa-tabs">
         <ul className="nav nav-tabs" role="tablist">
-          <li role="presentation">
-            <a href="#" className="trigger-click" role="tab" aria-expanded="true">
-              <span className="fa-badge" aria-hidden="true" role="presentation">A</span>
-              <span className="fa-text">All Hospitals</span>
-            </a>
-          </li>
-          <li role="presentation">
-            <a href="#" className="trigger-click" role="tab" aria-expanded="true">
-              <span className="fa-badge" aria-hidden="true" role="presentation">A</span>
-              <span className="fa-text">All Hospitals</span>
-            </a>
-          </li>
-          <li role="presentation">
-            <a href="#" className="trigger-click" role="tab" aria-expanded="true">
-              <span className="fa-badge" aria-hidden="true" role="presentation">A</span>
-              <span className="fa-text">All Hospitals</span>
-            </a>
-          </li>
-          <li role="presentation">
-            <a href="#" className="trigger-click" role="tab" aria-expanded="true">
-              <span className="fa-badge" aria-hidden="true" role="presentation">A</span>
-              <span className="fa-text">All Hospitals</span>
-            </a>
-          </li>
-          <li role="presentation">
-            <a href="#" className="trigger-click" role="tab" aria-expanded="true">
-              <span className="fa-badge" aria-hidden="true" role="presentation">A</span>
-              <span className="fa-text">All Hospitals</span>
-            </a>
-          </li>
+
+          {filters}
+
         </ul>
       </div>
     );

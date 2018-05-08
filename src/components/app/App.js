@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { compose, withProps } from 'recompose';
 import { withScriptjs } from 'react-google-maps';
 import './App.scss';
-import Filter from '../filter/Filter';
+import FilterItem from '../filter/FilterItem';
 import Result from '../result/Result';
 import ResultsFor from './ResultsFor';
 import Map from '../map/Map';
@@ -126,6 +126,15 @@ class App extends Component {
       }
     }
 
+
+    const filterItems = window['FindAHospitalSettings']['HospitalTypes'];
+    let filters = [];
+    filterItems.forEach((filterItem, idx) => filters.push(<FilterItem filter={filterItem} key={idx} onClick={(event) => {
+      event.preventDefault();
+      //this.doSearch(coordinates.lat, coordinates.lng, hospitals.length);
+      console.log(filterItem);
+    }} />));
+
     const hospitalsProp = this.props.hospitals;
     let totalResults = 0;
     hospitals=[];
@@ -139,7 +148,6 @@ class App extends Component {
     hospitals.forEach((item,idx)=>{
       results.push(<Result key={idx} idx={idx+1} hospital={item} />);
     });
-
 
     return (
       <div className="module">
@@ -165,7 +173,16 @@ class App extends Component {
             <button>View Map</button>
           </div>
           <div>
-            <Filter/>
+            <div className="fa-tabs">
+              <ul className="nav nav-tabs" role="tablist">
+                {filterItems.map((filterItem, idx) => {
+                  return <FilterItem filter={filterItem} key={idx} onClick={(event)=>{
+                    event.preventDefault();
+                    console.log('FilterItem click', event);
+                  }} />
+                })}
+              </ul>
+            </div>
           </div>
         </header>
         <div className="app-container">
