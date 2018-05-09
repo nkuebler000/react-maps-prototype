@@ -54,6 +54,7 @@ class App extends Component {
     this.searchOnSubmit = this.searchOnSubmit.bind(this);
     this.searchOnChange = this.searchOnChange.bind(this);
     this.doSearch = this.doSearch.bind(this);
+    this.getCurrentCoordinates = this.getCurrentCoordinates.bind(this);
   }
 
   static getDerivedStateFromProps(nextProps, prevState) {
@@ -69,6 +70,8 @@ class App extends Component {
   }
 
   componentDidUpdate(prevProps, prevState, snapshot) {
+
+    //dispatch search action when the location changes
     const oldGeo = prevState.geocodeInfo;
     const newGeo = this.state.geocodeInfo;
     if (oldGeo && newGeo && oldGeo.place_id !== newGeo.place_id) {
@@ -76,6 +79,17 @@ class App extends Component {
     }
     if (!oldGeo && newGeo) {
       this.doSearch(newGeo.geometry.location.lat(), newGeo.geometry.location.lng(), 0);
+    }
+
+    //dispatch search action when the filters change
+    const coordinates = this.getCurrentCoordinates();
+    const newFilters = this.state.selectedFilters;
+    const oldFilters = prevState.selectedFilters;
+    if (newFilters.length !== oldFilters.length) {
+      this.doSearch(coordinates.lat, coordinates.lng, 0);
+    }
+    if (newFilters.length === oldFilters.length && newFilters[0] !== oldFilters[0]) {
+      this.doSearch(coordinates.lat, coordinates.lng, 0);
     }
   }
 
@@ -93,6 +107,22 @@ class App extends Component {
     this.setState({searchValue: event.target.value});
   }
 
+  getCurrentCoordinates() {
+    let coordinates;
+    const initialMarket = this.props.initialMarket;
+    if (initialMarket) {
+      coordinates = { lat: initialMarket.Latitude, lng: initialMarket.Longitude };
+    }
+    if (this.state.geocodeInfo) {
+      const info = this.state.geocodeInfo;
+      if (info.geometry && info.geometry.location) {
+        const location = info.geometry.location;
+        coordinates = { lat: location.lat(), lng: location.lng() };
+      }
+    }
+    return coordinates;
+  }
+
   doSearch(lat, lng, resultCount){
     const bounds = getBounds(lat, lng, window['FindAHospitalSettings']['MaximumRadius']);
     if (bounds) {
@@ -104,7 +134,7 @@ class App extends Component {
         corpCountry: window['FindAHospitalSettings']['CorpCountry'],
         getMoreCount: window['FindAHospitalSettings']['GetMoreCount'],
         resultCount: resultCount,
-        currentHospitalType: [window['FindAHospitalSettings']['HospitalTypes'][0].id]
+        currentHospitalType: this.state.selectedFilters
       }));
     }
   }
@@ -112,21 +142,14 @@ class App extends Component {
   render() {
 
     let coordinates, addressComponents, hospitals;
-    const initialMarket = this.props.initialMarket;
-    if (initialMarket) {
-      coordinates = { lat: initialMarket.Latitude, lng: initialMarket.Longitude };
-    }
+    coordinates = this.getCurrentCoordinates();
+
     if (this.state.geocodeInfo) {
       const info = this.state.geocodeInfo;
       if (info.address_components) {
         addressComponents = this.state.geocodeInfo.address_components;
       }
-      if (info.geometry && info.geometry.location) {
-        const location = info.geometry.location;
-        coordinates = { lat: location.lat(), lng: location.lng() };
-      }
     }
-
 
     const filterItems = window['FindAHospitalSettings']['HospitalTypes'];
 
@@ -150,7 +173,7 @@ class App extends Component {
           <form onSubmit={this.searchOnSubmit}>
             <h1><label htmlFor="searchLocation">Find a hospital:</label>
               <p>Showing results for&nbsp;</p>
-              <p className="zipcode-label"><ResultsFor addressComponents={addressComponents} initialMarket={initialMarket.Name} /></p>
+              <p className="zipcode-label"><ResultsFor addressComponents={addressComponents} initialMarket={this.props.initialMarket.Name} /></p>
             </h1>
             <div className="form-group search-group">
               <input
@@ -173,21 +196,8 @@ class App extends Component {
                 {filterItems.map((filterItem, idx) => {
                   return <FilterItem filter={filterItem} key={idx} selectedFilters={this.state.selectedFilters} onClick={(item)=>{
 
-                    const selectedFilters = this.state.selectedFilters;
-
-                    //remove the all hospitals filter when selecting on of the others
-                    const allHospitalsId = window['FindAHospitalSettings']['AllHospitalsType'];
-                    if (item.id !== allHospitalsId) {
-                      const allHospitalsIndex = selectedFilters.indexOf(allHospitalsId);
-                      if (allHospitalsIndex != -1) {
-                        selectedFilters.splice(allHospitalsIndex, 1)
-                        this.setState({
-                          selectedFilters: selectedFilters
-                        });
-                      }
-                    }
-
                     //when selecting the all hospitals filter deselect all the other filters
+                    const allHospitalsId = window['FindAHospitalSettings']['AllHospitalsType'];
                     if (item.id === allHospitalsId) {
                       this.setState({
                         selectedFilters: [allHospitalsId]
@@ -195,20 +205,28 @@ class App extends Component {
                       return;
                     }
 
-                    const index = selectedFilters.indexOf(item.id);
-                    if (index === -1) {
-                      selectedFilters.push(item.id);
-                      this.setState({
-                        selectedFilters: selectedFilters
-                      });
-                    } else {
-                      if (selectedFilters.length !== 1) {
-                        selectedFilters.splice(index, 1);
-                        this.setState({
-                          selectedFilters: selectedFilters
-                        });
+                    let filters = [].concat(this.state.selectedFilters);
+
+                    if (item.id !== allHospitalsId) {
+                      const allHospitalsIndex = filters.indexOf(allHospitalsId);
+                      if (allHospitalsIndex != -1) {
+                        filters.splice(allHospitalsIndex, 1);
                       }
                     }
+
+                    const index = filters.indexOf(item.id);
+                    if (index === -1) {
+                      filters.push(item.id);
+                    } else {
+                      if (filters.length !== 1) {
+                        filters.splice(index, 1);
+                      }
+                    }
+
+                    this.setState({
+                      selectedFilters: filters
+                    });
+                    
                   }} />
                 })}
               </ul>
