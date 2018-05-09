@@ -66,7 +66,8 @@ class MapComponent extends Component {
             scaleControl: false,
             streetViewControl: false,
             rotateControl: false,
-            fullscreenControl: false }}
+            fullscreenControl: false,
+            maxZoom: 14 }}
           ref="map" >
           {this.props.hospitals.map((hospitalItem,idx) => {
             return (
