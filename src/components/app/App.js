@@ -160,12 +160,6 @@ class App extends Component {
       hospitals = hospitalsProp.hospitalInfo.Hospitals;
       totalResults = hospitalsProp.hospitalInfo.TotalResults;
     }
-    console.log('totalResults', totalResults);
-
-    let results = [];
-    hospitals.forEach((item,idx)=>{
-      results.push(<Result key={idx} idx={idx+1} hospital={item} />);
-    });
 
     return (
       <div className="module">
@@ -241,7 +235,9 @@ class App extends Component {
             <div className="tab-content" aria-live="polite">
               <div role="tabpanel" className="tab-pane fade active in" id="fah-tabpanel0">
                 <div className="location-list">
-                  {results}
+                  {hospitals.map((item,idx)=>{
+                      return <Result key={idx} idx={idx+1} hospital={item} />;
+                    })}
                   <div className="load-more">
                     {hospitals.length < totalResults && <a href="#" onClick={(event) => {
                       event.preventDefault();
