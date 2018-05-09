@@ -209,7 +209,7 @@ class App extends Component {
 
                     if (item.id !== allHospitalsId) {
                       const allHospitalsIndex = filters.indexOf(allHospitalsId);
-                      if (allHospitalsIndex != -1) {
+                      if (allHospitalsIndex !== -1) {
                         filters.splice(allHospitalsIndex, 1);
                       }
                     }
