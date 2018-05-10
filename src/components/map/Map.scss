@@ -31,7 +31,7 @@
     .gm-map {
       height: 100%;
       width: 100%;
-      position: fixed;
+      position: fixed !important;
       left: 0;
       z-index: 9000;
 
