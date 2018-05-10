@@ -74,7 +74,7 @@ class MapComponent extends Component {
   render(){
     return (
       <div>
-        <button className="map-view-list animated">View List</button>
+        <button className="map-view-list animated" style={this.props.clientHeight}>View List</button>
         <GoogleMap
           defaultZoom={8}
           center={this.props.mapCenter}
@@ -126,7 +126,7 @@ class MapComponent extends Component {
 const Map = compose(
   withProps({
     containerElement: <div className="map-container" />,
-    mapElement: <div className="gm-map animated" />
+    mapElement: <div className="gm-map animated" style={this.props.clientHeight} />
   }),
   withGoogleMap
 )(MapComponent);

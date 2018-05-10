@@ -48,7 +48,8 @@ class App extends Component {
       searchValue: '',
       resultsFor: '',
       geocodeInfo: null,
-      selectedFilters: [ window['FindAHospitalSettings']['AllHospitalsType'] ]
+      selectedFilters: [ window['FindAHospitalSettings']['AllHospitalsType'] ],
+      clientHeight: { top: `${document.documentElement.clientHeight+100}px` }
     };
 
     this.searchOnSubmit = this.searchOnSubmit.bind(this);
@@ -247,6 +248,7 @@ class App extends Component {
               hospitals={hospitals}
               resultPinClickedIndex={this.props.resultPin.index}
               dispatch={this.props.dispatch}
+              clientHeight={this.state.clientHeight}
             />
           </div>
           <div className="listing-container">
