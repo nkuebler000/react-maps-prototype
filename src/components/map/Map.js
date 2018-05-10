@@ -124,9 +124,12 @@ class MapComponent extends Component {
 }
 
 const Map = compose(
-  withProps({
-    containerElement: <div className="map-container" />,
-    mapElement: <div className="gm-map animated" style={this.props.clientHeight} />
+  withProps(props => {
+    console.log('withProps', props);
+    return {
+      containerElement: <div className="map-container" />,
+      mapElement: <div className="gm-map animated" />
+    };
   }),
   withGoogleMap
 )(MapComponent);
