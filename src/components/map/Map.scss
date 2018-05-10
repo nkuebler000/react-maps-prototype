@@ -22,6 +22,7 @@
       z-index: 10000;
       position: fixed;
       left: 0;
+      top: 0;
 
       &.animated {
         transition: top .5s;
