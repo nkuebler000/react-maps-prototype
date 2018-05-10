@@ -8,7 +8,7 @@ class Result extends Component {
   render(){
     const hospital = this.props.hospital;
     return (
-      <div className="hospital-info-block">
+      <div className={`hospital-info-block hospital-info-block${this.props.idx}`}>
         <div className="marker">
           <div className="cc-marker pin-location" onClick={()=>{
             this.props.dispatch(resultPinClick({index: this.props.idx}));

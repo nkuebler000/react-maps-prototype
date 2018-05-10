@@ -91,6 +91,19 @@ class App extends Component {
     if (newFilters.length === oldFilters.length && newFilters[0] !== oldFilters[0]) {
       this.doSearch(coordinates.lat, coordinates.lng, 0);
     }
+
+    //scroll the hospital into view whose pin was clicked on the map
+    const newMapPin = this.props.mapPin.index;
+    const oldMapPin = prevProps.mapPin.index;
+    if (newMapPin !== oldMapPin) {
+      let hospitalInfoBlocks = document.getElementsByClassName(`hospital-info-block${newMapPin}`);
+      if (hospitalInfoBlocks.length) {
+        hospitalInfoBlocks[0].scrollIntoView({
+          behavior: 'smooth',
+          block: 'start' 
+        });
+      }
+    }
   }
 
   searchOnSubmit(event) {
