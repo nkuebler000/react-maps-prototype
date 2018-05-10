@@ -229,7 +229,12 @@ class App extends Component {
         </header>
         <div className="app-container">
           <div className="app-map-container">
-            <Map mapCenter={coordinates} hospitals={hospitals} resultPinClickedIndex={this.props.resultPin.index} />
+            <Map
+              mapCenter={coordinates}
+              hospitals={hospitals}
+              resultPinClickedIndex={this.props.resultPin.index}
+              dispatch={this.props.dispatch}
+            />
           </div>
           <div className="listing-container">
             <div className="tab-content" aria-live="polite">
@@ -256,11 +261,12 @@ class App extends Component {
 }
 
 const mapStateToProps = state => {
-  const { geocode, hospitals, resultPin } = state;
+  const { geocode, hospitals, resultPin, mapPin } = state;
   return {
     geocode,
     hospitals,
-    resultPin
+    resultPin,
+    mapPin
   }
 };
 

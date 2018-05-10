@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import './Map.scss';
 import { compose, withProps } from 'recompose';
 import { withGoogleMap, GoogleMap, Marker, InfoWindow } from 'react-google-maps';
-
+import { mapPinClick } from '../../redux/actions/mapPin';
 
 
 
@@ -101,6 +101,7 @@ class MapComponent extends Component {
                   hospitals.forEach(hospital => hospital.iwOpen = false);
                   hospitals[idx].iwOpen = true;
                   this.setState({ hospitals });
+                  this.props.dispatch(mapPinClick({index: (idx+1)}))
                 }}
               >
                 {this.state.hospitals[idx] && this.state.hospitals[idx].iwOpen &&
