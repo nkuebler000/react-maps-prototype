@@ -229,14 +229,14 @@ class App extends Component {
         </header>
         <div className="app-container">
           <div className="app-map-container">
-            <Map mapCenter={coordinates} hospitals={hospitals} />
+            <Map mapCenter={coordinates} hospitals={hospitals} resultPinClickedIndex={this.props.resultPin.index} />
           </div>
           <div className="listing-container">
             <div className="tab-content" aria-live="polite">
               <div role="tabpanel" className="tab-pane fade active in" id="fah-tabpanel0">
                 <div className="location-list">
                   {hospitals.map((item,idx)=>{
-                      return <Result key={idx} idx={idx+1} hospital={item} />;
+                      return <Result key={idx} idx={idx+1} hospital={item} dispatch={this.props.dispatch} />;
                     })}
                   <div className="load-more">
                     {hospitals.length < totalResults && <a href="#" onClick={(event) => {
@@ -256,10 +256,11 @@ class App extends Component {
 }
 
 const mapStateToProps = state => {
-  const { geocode, hospitals } = state;
+  const { geocode, hospitals, resultPin } = state;
   return {
     geocode,
-    hospitals
+    hospitals,
+    resultPin
   }
 };
 

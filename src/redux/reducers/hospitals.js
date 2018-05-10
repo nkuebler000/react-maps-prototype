@@ -11,7 +11,6 @@ const hospitals = (
         isFetching: true
       });
     case END_GET_HOSPITALS:
-      console.log('END_GET_HOSPITALS', action);
       if (action.resultCount === 0) {
         return Object.assign({}, state, {
           isFetching: false,

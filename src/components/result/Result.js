@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Hours from './Hours';
 import HospitalTypes from './HospitalTypes';
 import './Result.scss';
+import { resultPinClick } from '../../redux/actions/resultPin';
 
 class Result extends Component {
   render(){
@@ -9,7 +10,9 @@ class Result extends Component {
     return (
       <div className="hospital-info-block">
         <div className="marker">
-          <div className="cc-marker pin-location" > <span>{this.props.idx}</span> </div>
+          <div className="cc-marker pin-location" onClick={()=>{
+            this.props.dispatch(resultPinClick({index: this.props.idx}));
+          }}> <span>{this.props.idx}</span> </div>
         </div>
         <div className="locale">
           <a href={hospital.Url}>

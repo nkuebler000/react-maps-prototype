@@ -51,6 +51,24 @@ class MapComponent extends Component {
         this.setState({hospitals});
       }
     }
+
+    if (this.props.resultPinClickedIndex !== prevProps.resultPinClickedIndex) {
+      let hospitals = [];
+      this.state.hospitals.forEach((hospital,idx) => {
+        if ((idx+1) === this.props.resultPinClickedIndex) {
+          hospitals.push({
+            Url: hospital.Url,
+            iwOpen: true
+          });
+        } else {
+          hospitals.push({
+            Url: hospital.Url,
+            iwOpen: false
+          });
+        }
+      });
+      this.setState({hospitals});
+    }
   }
 
   render(){
