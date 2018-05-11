@@ -131,7 +131,6 @@ class MapComponent extends Component {
 
 const Map = compose(
   withProps(props => {
-    console.log('withProps', props);
     return {
       containerElement: <div className="map-container" />,
       mapElement: <div className="gm-map animated" style={props.clientHeight} />
