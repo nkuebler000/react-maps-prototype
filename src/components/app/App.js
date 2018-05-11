@@ -196,7 +196,11 @@ class App extends Component {
             </div>
           </form>
           <div className="form-group search-group view-map">
-            <button>View Map</button>
+            <button onClick={()=>{
+              this.setState({
+                clientHeight: { top: `0px` }
+              });
+            }}>View Map</button>
           </div>
           <div>
             <div className="fa-tabs">
@@ -249,6 +253,11 @@ class App extends Component {
               resultPinClickedIndex={this.props.resultPin.index}
               dispatch={this.props.dispatch}
               clientHeight={this.state.clientHeight}
+              onViewListClick={()=>{
+                this.setState({
+                  clientHeight: { top: `${document.documentElement.clientHeight+100}px` }
+                });
+              }}
             />
           </div>
           <div className="listing-container">

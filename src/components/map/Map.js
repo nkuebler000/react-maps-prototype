@@ -74,7 +74,13 @@ class MapComponent extends Component {
   render(){
     return (
       <div>
-        <button className="map-view-list animated" style={this.props.clientHeight}>View List</button>
+        <button
+          className="map-view-list animated"
+          style={this.props.clientHeight}
+          onClick={()=>{
+            this.props.onViewListClick();
+          }}
+        >View List</button>
         <GoogleMap
           defaultZoom={8}
           center={this.props.mapCenter}
@@ -128,7 +134,7 @@ const Map = compose(
     console.log('withProps', props);
     return {
       containerElement: <div className="map-container" />,
-      mapElement: <div className="gm-map animated" />
+      mapElement: <div className="gm-map animated" style={props.clientHeight} />
     };
   }),
   withGoogleMap
