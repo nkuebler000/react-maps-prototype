@@ -44,12 +44,13 @@ class App extends Component {
 
   constructor(props) {
     super(props);
+    const isMobileBreakpoint = window.matchMedia('(max-width: 768px)');
     this.state = {
       searchValue: '',
       resultsFor: '',
       geocodeInfo: null,
       selectedFilters: [ window['FindAHospitalSettings']['AllHospitalsType'] ],
-      clientHeight: { top: `${document.documentElement.clientHeight+100}px` }
+      clientHeight: { top: isMobileBreakpoint.matches ? `${document.documentElement.clientHeight+100}px` : 0 }
     };
 
     this.searchOnSubmit = this.searchOnSubmit.bind(this);
@@ -104,6 +105,15 @@ class App extends Component {
           block: 'start' 
         });
       }
+    }
+
+    const oldResultPin = this.props.resultPin.index;
+    const newResultPin = prevProps.resultPin.index;
+    const isMobileBreakpoint = window.matchMedia('(max-width: 768px)');
+    if ((newResultPin !== oldResultPin) && isMobileBreakpoint) {
+      this.setState({
+        clientHeight: { top: `0px` }
+      });
     }
   }
 
