@@ -50,7 +50,8 @@ class App extends Component {
       resultsFor: '',
       geocodeInfo: null,
       selectedFilters: [ window['FindAHospitalSettings']['AllHospitalsType'] ],
-      clientHeight: { top: isMobileBreakpoint.matches ? `${document.documentElement.clientHeight+100}px` : 0 }
+      clientHeight: { top: isMobileBreakpoint.matches ? `${document.documentElement.clientHeight+100}px` : 0 },
+      hasLoadedFirstResultSet: false
     };
 
     this.searchOnSubmit = this.searchOnSubmit.bind(this);
@@ -283,7 +284,7 @@ class App extends Component {
                       this.doSearch(coordinates.lat, coordinates.lng, hospitals.length);
                     }}>Load More +</a> }
                   </div>
-                  {hospitals.length === 0 && <div className="no-results">No results were found. Please try another location.</div>}
+                  {hospitalsProp && hospitalsProp.hospitalInfo && hospitals.length === 0 && <div className="no-results">No results were found. Please try another location.</div>}
                 </div>
               </div>
             </div>
