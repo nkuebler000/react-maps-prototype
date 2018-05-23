@@ -1,0 +1,643 @@
+<!DOCTYPE html><!--[if IE]><html xmlns="http://www.w3.org/1999/xhtml" lang="en" class="ie"><![endif]--><!--[if !IE]><!--><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><!--<![endif]--><head>
+    <title>Find A Hospital</title>
+<meta name="description" content="">
+
+<meta name="keywords" content="">
+
+
+
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge"><script type="text/javascript">window.NREUM||(NREUM={});NREUM.info = {"beacon":"bam.nr-data.net","errorBeacon":"bam.nr-data.net","licenseKey":"358f83ca71","applicationID":"26110018","transactionName":"b1wGYBBRDEcEAUALWlYWKWIhHzFdEQdXDUddegtaFkINWAkHRk18Vl0BTA==","queueTime":0,"applicationTime":592,"agent":"","atts":""}</script><script type="text/javascript">window.NREUM||(NREUM={}),__nr_require=function(e,t,n){function r(n){if(!t[n]){var o=t[n]={exports:{}};e[n][0].call(o.exports,function(t){var o=e[n][1][t];return r(o||t)},o,o.exports)}return t[n].exports}if("function"==typeof __nr_require)return __nr_require;for(var o=0;o<n.length;o++)r(n[o]);return r}({1:[function(e,t,n){function r(){}function o(e,t,n){return function(){return i(e,[f.now()].concat(u(arguments)),t?null:this,n),t?void 0:this}}var i=e("handle"),a=e(2),u=e(3),c=e("ee").get("tracer"),f=e("loader"),s=NREUM;"undefined"==typeof window.newrelic&&(newrelic=s);var p=["setPageViewName","setCustomAttribute","setErrorHandler","finished","addToTrace","inlineHit","addRelease"],d="api-",l=d+"ixn-";a(p,function(e,t){s[t]=o(d+t,!0,"api")}),s.addPageAction=o(d+"addPageAction",!0),s.setCurrentRouteName=o(d+"routeName",!0),t.exports=newrelic,s.interaction=function(){return(new r).get()};var m=r.prototype={createTracer:function(e,t){var n={},r=this,o="function"==typeof t;return i(l+"tracer",[f.now(),e,n],r),function(){if(c.emit((o?"":"no-")+"fn-start",[f.now(),r,o],n),o)try{return t.apply(this,arguments)}catch(e){throw c.emit("fn-err",[arguments,this,e],n),e}finally{c.emit("fn-end",[f.now()],n)}}}};a("setName,setAttribute,save,ignore,onEnd,getContext,end,get".split(","),function(e,t){m[t]=o(l+t)}),newrelic.noticeError=function(e){"string"==typeof e&&(e=new Error(e)),i("err",[e,f.now()])}},{}],2:[function(e,t,n){function r(e,t){var n=[],r="",i=0;for(r in e)o.call(e,r)&&(n[i]=t(r,e[r]),i+=1);return n}var o=Object.prototype.hasOwnProperty;t.exports=r},{}],3:[function(e,t,n){function r(e,t,n){t||(t=0),"undefined"==typeof n&&(n=e?e.length:0);for(var r=-1,o=n-t||0,i=Array(o<0?0:o);++r<o;)i[r]=e[t+r];return i}t.exports=r},{}],4:[function(e,t,n){t.exports={exists:"undefined"!=typeof window.performance&&window.performance.timing&&"undefined"!=typeof window.performance.timing.navigationStart}},{}],ee:[function(e,t,n){function r(){}function o(e){function t(e){return e&&e instanceof r?e:e?c(e,u,i):i()}function n(n,r,o,i){if(!d.aborted||i){e&&e(n,r,o);for(var a=t(o),u=m(n),c=u.length,f=0;f<c;f++)u[f].apply(a,r);var p=s[y[n]];return p&&p.push([b,n,r,a]),a}}function l(e,t){v[e]=m(e).concat(t)}function m(e){return v[e]||[]}function w(e){return p[e]=p[e]||o(n)}function g(e,t){f(e,function(e,n){t=t||"feature",y[n]=t,t in s||(s[t]=[])})}var v={},y={},b={on:l,emit:n,get:w,listeners:m,context:t,buffer:g,abort:a,aborted:!1};return b}function i(){return new r}function a(){(s.api||s.feature)&&(d.aborted=!0,s=d.backlog={})}var u="nr@context",c=e("gos"),f=e(2),s={},p={},d=t.exports=o();d.backlog=s},{}],gos:[function(e,t,n){function r(e,t,n){if(o.call(e,t))return e[t];var r=n();if(Object.defineProperty&&Object.keys)try{return Object.defineProperty(e,t,{value:r,writable:!0,enumerable:!1}),r}catch(i){}return e[t]=r,r}var o=Object.prototype.hasOwnProperty;t.exports=r},{}],handle:[function(e,t,n){function r(e,t,n,r){o.buffer([e],r),o.emit(e,t,n)}var o=e("ee").get("handle");t.exports=r,r.ee=o},{}],id:[function(e,t,n){function r(e){var t=typeof e;return!e||"object"!==t&&"function"!==t?-1:e===window?0:a(e,i,function(){return o++})}var o=1,i="nr@id",a=e("gos");t.exports=r},{}],loader:[function(e,t,n){function r(){if(!x++){var e=h.info=NREUM.info,t=d.getElementsByTagName("script")[0];if(setTimeout(s.abort,3e4),!(e&&e.licenseKey&&e.applicationID&&t))return s.abort();f(y,function(t,n){e[t]||(e[t]=n)}),c("mark",["onload",a()+h.offset],null,"api");var n=d.createElement("script");n.src="https://"+e.agent,t.parentNode.insertBefore(n,t)}}function o(){"complete"===d.readyState&&i()}function i(){c("mark",["domContent",a()+h.offset],null,"api")}function a(){return E.exists&&performance.now?Math.round(performance.now()):(u=Math.max((new Date).getTime(),u))-h.offset}var u=(new Date).getTime(),c=e("handle"),f=e(2),s=e("ee"),p=window,d=p.document,l="addEventListener",m="attachEvent",w=p.XMLHttpRequest,g=w&&w.prototype;NREUM.o={ST:setTimeout,SI:p.setImmediate,CT:clearTimeout,XHR:w,REQ:p.Request,EV:p.Event,PR:p.Promise,MO:p.MutationObserver};var v=""+location,y={beacon:"bam.nr-data.net",errorBeacon:"bam.nr-data.net",agent:"js-agent.newrelic.com/nr-1071.min.js"},b=w&&g&&g[l]&&!/CriOS/.test(navigator.userAgent),h=t.exports={offset:u,now:a,origin:v,features:{},xhrWrappable:b};e(1),d[l]?(d[l]("DOMContentLoaded",i,!1),p[l]("load",r,!1)):(d[m]("onreadystatechange",o),p[m]("onload",r)),c("mark",["firstbyte",u],null,"api");var x=0,E=e(4)},{}]},{},["loader"]);</script>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- Open Graph data: fallback for most social media service basic tags -->
+<meta property="og:title" content="Find A Hospital">
+<meta property="og:type" content="website">
+<meta property="og:url" content="ca.cm.qa.preview.vca.webstagesite.com/find-a-hospital">
+<meta property="og:description" content="">
+<meta property="og:site_name" content="vca_canada_corporate">
+
+<link href="http://ca.cm.qa.preview.vca.webstagesite.com/Includes/_css/bootstrap.css?v=636513463000000000" rel="stylesheet">
+    <link href="http://ca.cm.qa.preview.vca.webstagesite.com/Includes/_css/app.css?v=636607722238546654" rel="stylesheet">
+
+
+<link rel="stylesheet" href="http://ca.cm.qa.preview.vca.webstagesite.com/Includes/_css/framework/font-awesome.min.css?v=636366766600000000">
+
+<link href="https://fonts.googleapis.com/css?family=Courgette" rel="stylesheet" type="text/css">
+<link href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,600,700,800" rel="stylesheet">
+
+<meta name="VIcurrentDateTime" content="636614923292769363">
+<script type="text/javascript" src="http://ca.cm.qa.preview.vca.webstagesite.com/layouts/system/VisitorIdentification.js"></script>
+
+
+
+
+
+
+
+
+
+<script>
+window.dataLayer = window.dataLayer || [];
+window.dataLayer.push({
+    'event': 'dataLayer-loaded',
+    'page': {
+        'hospital-name': '',
+        'hospital-au': '',
+        'hospital-type': 'Main',
+        'region-id': '',
+        'group-id': '',
+        'page-type':  'find a hospital landing page',
+        'page-variant': 'corporate',
+        'appt-tool': '',
+        'offer-variant': '',
+        'myvca-enabled': 'false'
+    },
+    'user': {
+        'userid': undefined,
+        'clientid': undefined,
+        'pet-profiles': '0'
+    }
+
+});
+</script>
+
+</head>
+
+<body>
+<script>
+    var VCA = VCA || {};
+    VCA.ContextSiteName = "vca_canada_corporate";
+    VCA.ContextVirtualFolder = "/";
+    VCA.HospitalId = "";
+</script>
+
+<!-- Return to Top -->
+<a href="javascript:" id="return-to-top"><i class="fa fa-chevron-up"></i></a>
+
+<script>
+VCA.CurrentItemId = "9e12dc66-9543-4093-9526-1186e0545ddf";
+</script>
+
+
+
+
+<!-- Snippet Section Start-->
+    <script>
+        (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-PGK9DQ');
+    </script>
+<!-- Snippet Section End-->
+
+
+
+
+
+
+<section id="header" class="header" role="banner">
+<div class="container-fluid">
+    <div class="row">
+
+        <div class="top-nav">
+
+            <div class="utility-content-area">
+
+
+<div data-panel="emergency" class="panel emergency set-bg darkred">
+<script>
+    document.addEventListener("DOMContentLoaded", function (event) {
+        var pageNotFound = document.getElementsByClassName('page-not-found').length;
+        if (pageNotFound > 0) {
+            var searchForm = document.getElementById('emergency-form');
+            searchForm.action = '/';
+        }
+    });
+</script>
+<div class="search">
+    <p>Find the nearest location to:</p>
+<form action="/find-a-hospital" id="emergency-form" method="post"><input id="scController" name="scController" type="hidden" value="Header"><input id="scAction" name="scAction" type="hidden" value="RedirectWithZip">                    <label for="emergency-zip" class="sr-only">Find the nearest location to:</label>
+<input id="emergency-zip" name="zip" type="text" value="02110">                    <input id="emergency-hospType" name="hospType" type="hidden" value="emergency">
+                <input type="submit" value="Search">
+</form>    </div>
+</div>
+<div data-panel="search" class="panel search set-bg darkcyan">
+<script>
+    document.addEventListener("DOMContentLoaded", function (event) {
+        var pageNotFound = document.getElementsByClassName('page-not-found').length;
+        if (pageNotFound > 0) {
+            var searchForm = document.getElementById('search-form');
+            searchForm.action = '/';
+        }
+    });
+</script>
+<div class="search">
+    <p>What can we dig up for you?</p>
+<form action="/find-a-hospital" id="search-form" method="post"><input id="scController" name="scController" type="hidden" value="Header"><input id="scAction" name="scAction" type="hidden" value="RedirectWithText">                    <label for="search-searchText" class="sr-only">What can we dig up for you?</label>
+                <div class="drawer-search-input">
+                    <input data-validation="required" id="search-searchText" name="searchText" type="text" value="">
+                </div>
+                <input type="submit" value="Search">
+</form>    </div>
+</div>
+            </div>
+            <div class="links">
+                <ul class="skip">
+                    <li><a href="#Nav" role="button"></a></li>
+                    <li><a href="#Main" role="button"></a></li>
+                    <li><a href="#footer-corporate" role="button"></a></li>
+                </ul>
+                            <a href="#" data-panel="emergency" class="emergency" tabindex="0" role="button" data-nav-name="emergency" data-click-location="utility">
+                                <div class="carrot darkred"></div>
+                                <img src="http://ca.cm.qa.preview.vca.webstagesite.com/-/media/vca/svg/mobile-nav/mobile-nav_icon-emergency.ashx?la=en&hash=59353649770863AC4CB619AC5DEEF47F170A30A3" alt="">
+                                <span>Emergency</span>
+                            </a>
+                            <a href="#" data-panel="search" class="search" tabindex="0" role="button" data-nav-name="search" data-click-location="utility">
+                                <div class="carrot darkcyan"></div>
+                                <img src="http://ca.cm.qa.preview.vca.webstagesite.com/-/media/vca/svg/mobile-nav/mobile-nav_icon-magnifier.ashx?la=en&hash=BB7C50B9E2B62A3A52215D5EAD3191723AB9EF58" alt="">
+                                <span>Search</span>
+                            </a>
+            </div>
+        </div>
+        <div class="main-nav" id="Nav">
+            <div class="row">
+                <div class="logo-title">
+                        <a class="logo-title-wrapper" href="http://ca.cm.qa.preview.vca.webstagesite.com/">
+                            <div class="logo">
+                                <img src="http://ca.cm.qa.preview.vca.webstagesite.com/-/media/vca-canada/images/global-images/185x53_vcaclogo.ashx?h=53&w=185&la=en&hash=1CA8CC937BD15CD2FBB47FC22059BB28FC2ACF25" class="img-responsive" alt="">
+                            </div>
+                            
+                        </a>
+                </div>
+                
+
+                    <nav class="main-nav-container" data-panel="navLinks" role="navigation">
+
+                        <ul>
+                                <li>
+                                    <a class="main-nav-links" data-nav-id="9e12dc66-9543-4093-9526-1186e0545ddf" href="http://ca.cm.qa.preview.vca.webstagesite.com/find-a-hospital" data-nav-name="find a hospital" data-click-location="main nav">Find A Hospital</a>
+                                        <ul data-panel="navLinks">
+                                                <li><a href="http://ca.cm.qa.preview.vca.webstagesite.com/find-a-hospital/location-directory">Location Directory</a></li>
+                                        </ul>
+                                </li>
+                                <li>
+                                    <a class="main-nav-links" data-nav-id="bd939e1a-76c4-4278-981b-3b48ee0b06d9" href="http://ca.cm.qa.preview.vca.webstagesite.com/why-vca-canada" data-nav-name="why vca canada" data-click-location="main nav">Why VCA Canada</a>
+                                        <ul data-panel="navLinks">
+                                                <li><a href="http://ca.cm.qa.preview.vca.webstagesite.com/why-vca-canada/acquire">Get back to what you love</a></li>
+                                                <li><a href="http://ca.cm.qa.preview.vca.webstagesite.com/why-vca-canada/acquisition">Joining Our Family</a></li>
+                                                <li><a href="http://ca.cm.qa.preview.vca.webstagesite.com/why-vca-canada/selling-your-hospital">Selling your Hospital</a></li>
+                                                <li><a href="http://ca.cm.qa.preview.vca.webstagesite.com/why-vca-canada/vca-canada-careclub">VCA Canada CareClub</a></li>
+                                        </ul>
+                                </li>
+                                <li>
+                                    <a class="main-nav-links" data-nav-id="8915fd59-ae81-4e91-bfc2-a62ceb34f53a" href="http://ca.cm.qa.preview.vca.webstagesite.com/in-the-community" data-nav-name="in the community" data-click-location="main nav">In The Community</a>
+                                        <ul data-panel="navLinks">
+                                                <li><a href="http://ca.cm.qa.preview.vca.webstagesite.com/in-the-community/paw-it-forward">Paw It Forward</a></li>
+                                                <li><a href="http://ca.cm.qa.preview.vca.webstagesite.com/in-the-community/pet-food-pantry">Pet Food Pantry</a></li>
+                                        </ul>
+                                </li>
+                                <li>
+                                    <a class="main-nav-links" data-nav-id="04d14dda-3b43-4f75-96c3-9fd4632f1c27" href="http://ca.cm.qa.preview.vca.webstagesite.com/contact-us" data-nav-name="contact us" data-click-location="main nav">Contact Us</a>
+                                        <ul data-panel="navLinks">
+                                                <li><a href="http://ca.cm.qa.preview.vca.webstagesite.com/contact-us/ca-careers">Careers</a></li>
+                                        </ul>
+                                </li>
+                        </ul>
+
+
+                    </nav>
+            </div>
+        </div>
+        
+        <div class="mobile-nav">
+            <ul>
+<div class="modal fade callus-modal-container set-bg darkblue" id="callUsModalMobile" tabindex="-1" role="dialog" aria-labelledby="callUsModalLabel" aria-hidden="true" data-backdrop="">
+    <div class="modal-dialog callus-modal">
+
+        <div class="modal-content set-bg darkblue">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+                <img src="http://ca.cm.qa.preview.vca.webstagesite.com/-/media/vca-canada/images/global-images/185x53_vcaclogo.ashx?h=53&w=185&la=en&hash=1CA8CC937BD15CD2FBB47FC22059BB28FC2ACF25" class="img-responsive" alt="">
+            </div>
+
+            <div class="modal-body set-bg darkblue">
+                <div class="center">
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+                            <li data-panel="emergency">
+                                <a class="emergency" href="#" data-nav-name="emergency" data-click-location="utility">
+                                    <img src="http://ca.cm.qa.preview.vca.webstagesite.com/-/media/vca/svg/mobile-nav/mobile-nav_icon-emergency.ashx?la=en&hash=59353649770863AC4CB619AC5DEEF47F170A30A3" alt="">
+                                </a>
+                                <div class="carrot darkred"></div>
+                            </li>
+<div class="modal fade callus-modal-container set-bg darkblue" id="callUsModalMobile" tabindex="-1" role="dialog" aria-labelledby="callUsModalLabel" aria-hidden="true" data-backdrop="">
+    <div class="modal-dialog callus-modal">
+
+        <div class="modal-content set-bg darkblue">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+                <img src="http://ca.cm.qa.preview.vca.webstagesite.com/-/media/vca-canada/images/global-images/185x53_vcaclogo.ashx?h=53&w=185&la=en&hash=1CA8CC937BD15CD2FBB47FC22059BB28FC2ACF25" class="img-responsive" alt="">
+            </div>
+
+            <div class="modal-body set-bg darkblue">
+                <div class="center">
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+                            <li data-panel="search">
+                                <a class="search" href="#" data-nav-name="search" data-click-location="utility">
+                                    <img src="http://ca.cm.qa.preview.vca.webstagesite.com/-/media/vca/svg/mobile-nav/mobile-nav_icon-magnifier.ashx?la=en&hash=BB7C50B9E2B62A3A52215D5EAD3191723AB9EF58" alt="">
+                                </a>
+                                <div class="carrot darkcyan"></div>
+                            </li>
+                <li data-panel="menu">
+                    <a class="menu" href="#">
+                        <img src="http://ca.cm.qa.preview.vca.webstagesite.com/-/media/vca/svg/mobile-nav/mobile-nav_icon-menu.ashx?la=en&hash=29786CF3D71D5A75005C75C96B23738827A68473" alt="">
+                    </a>
+                </li>
+                <li data-panel="close" class="hide">
+                    <a class="close-button" href="#">
+                        <img src="http://ca.cm.qa.preview.vca.webstagesite.com/-/media/vca/svg/mobile-nav/mobile-nav_icon-close.ashx?la=en&hash=34F4707CABAEADA80C7922EA0FA38BA2924479AE" alt="">
+                    </a>
+                </li>
+            </ul>
+
+        </div>
+        <div class="mobile-menus">
+            <div class="mobile-navigation" data-panel="menu">
+                <div class="carrot"></div>
+                <ul>
+                            <li class="has-children">
+                                <a href="http://ca.cm.qa.preview.vca.webstagesite.com/find-a-hospital" data-nav-name="find a hospital" data-click-location="main nav">Find A Hospital</a>
+                                    <span class="plus">+</span>
+                                    <span class="minus">-</span>
+                                    <ul>
+                                            <li>
+                                                <a href="http://ca.cm.qa.preview.vca.webstagesite.com/find-a-hospital/location-directory">Location Directory</a>
+                                            </li>
+                                    </ul>
+                            </li>
+                            <li class="has-children">
+                                <a href="http://ca.cm.qa.preview.vca.webstagesite.com/why-vca-canada" data-nav-name="why vca canada" data-click-location="main nav">Why VCA Canada</a>
+                                    <span class="plus">+</span>
+                                    <span class="minus">-</span>
+                                    <ul>
+                                            <li>
+                                                <a href="http://ca.cm.qa.preview.vca.webstagesite.com/why-vca-canada/acquire">Get back to what you love</a>
+                                            </li>
+                                            <li>
+                                                <a href="http://ca.cm.qa.preview.vca.webstagesite.com/why-vca-canada/acquisition">Joining Our Family</a>
+                                            </li>
+                                            <li>
+                                                <a href="http://ca.cm.qa.preview.vca.webstagesite.com/why-vca-canada/selling-your-hospital">Selling your Hospital</a>
+                                            </li>
+                                            <li>
+                                                <a href="http://ca.cm.qa.preview.vca.webstagesite.com/why-vca-canada/vca-canada-careclub">VCA Canada CareClub</a>
+                                            </li>
+                                    </ul>
+                            </li>
+                            <li class="has-children">
+                                <a href="http://ca.cm.qa.preview.vca.webstagesite.com/in-the-community" data-nav-name="in the community" data-click-location="main nav">In The Community</a>
+                                    <span class="plus">+</span>
+                                    <span class="minus">-</span>
+                                    <ul>
+                                            <li>
+                                                <a href="http://ca.cm.qa.preview.vca.webstagesite.com/in-the-community/paw-it-forward">Paw It Forward</a>
+                                            </li>
+                                            <li>
+                                                <a href="http://ca.cm.qa.preview.vca.webstagesite.com/in-the-community/pet-food-pantry">Pet Food Pantry</a>
+                                            </li>
+                                    </ul>
+                            </li>
+                            <li class="has-children">
+                                <a href="http://ca.cm.qa.preview.vca.webstagesite.com/contact-us" data-nav-name="contact us" data-click-location="main nav">Contact Us</a>
+                                    <span class="plus">+</span>
+                                    <span class="minus">-</span>
+                                    <ul>
+                                            <li>
+                                                <a href="http://ca.cm.qa.preview.vca.webstagesite.com/contact-us/ca-careers">Careers</a>
+                                            </li>
+                                    </ul>
+                            </li>
+                </ul>
+            </div>
+
+
+<div class="mobile-pushdown emergency-panel set-bg darkred" data-panel="emergency">
+<div class="emergency">
+    <p>Find the nearest location to:</p>
+<form action="/find-a-hospital" method="post"><input id="scController" name="scController" type="hidden" value="Header"><input id="scAction" name="scAction" type="hidden" value="RedirectWithZip">                    <label for="mobile_emergency-mobile-zip" class="sr-only">Find the nearest location to:</label>
+<input id="mobile_emergency-mobile-zip" name="zip" type="text" value="02110">                    <input id="mobile_emergency-mobile-hospType" name="hospType" type="hidden" value="emergency">
+                <input type="submit" value="Search">
+</form>    </div>
+</div>
+<div class="mobile-pushdown mobile-global-search set-bg darkcyan" data-panel="search">
+<div class="search">
+    <p>What can we dig up for you?</p>
+<form action="/find-a-hospital" method="post"><input id="scController" name="scController" type="hidden" value="Header"><input id="scAction" name="scAction" type="hidden" value="RedirectWithText">                    <label for="mobile_search-mobile-searchText" class="sr-only">What can we dig up for you?</label>
+                <div class="drawer-search-input">
+                    <input data-validation="required" id="mobile_search-mobile-searchText" name="searchText" type="text" value="">
+                </div>
+                <input type="submit" value="Search">
+</form>    </div>
+</div>
+        </div>
+        
+    </div>
+    <div class="mobile-page-title">
+        <p role="heading" class="set-heading2"></p>
+
+    </div>
+</div>
+</section>
+
+<section id="page-container" data-role="page">
+    <div class="container-fluid">
+        <div class="outer-wrapper">
+            <main id="Main" role="main">
+                
+
+
+<div class="fa-hospital2"><div id="react-root"></div></div>
+<script type="text/javascript">
+var FindAHospitalSettings = {
+        LoadMoreCount: 7,
+        GetMoreCount: 7,
+        MaximumRadius: 50,
+        GMapsAPIKey: "AIzaSyDgnX1YnZyu8d1AlgBu6gNzol9CdWw15LQ",        
+        GMapCenterLat: 56.1304016113281,
+        GMapCenterLong: -106.346801757813,
+        InitialZoomSetting: 5,
+        MaxZoomOutSetting: 8,
+        CorpCountry: "{7C27B73C-3234-4026-B448-F9A5669FE0C4}",
+        InitialLocationSearchTerm: "",
+        HTML5Enabled: true
+    };
+
+</script>
+
+                
+
+<div class="ajax-loader">
+    <div class="ajax-loader-wrapper">
+        <div class="ajax-loader-inner">
+            <img src="http://ca.cm.qa.preview.vca.webstagesite.com/-/media/vca/images/woofware/default.ashx?la=en&hash=332919A0B406C0933BDB94FDF5B0DB2327CEEC8E" alt="Loading... Please wait">
+        </div>
+    </div>
+</div>
+
+            </main>
+        </div>
+    </div>
+</section>
+
+
+<section id="footer-corporate" class="footer" role="contentinfo">
+<div class="container-fluid">
+    <div class="footer-wrapper">
+            <div class="links">
+                        <div class="column utility">
+                            <ul>
+                                        <li>
+                                            <a data-panel="" href="http://ca.cm.qa.preview.vca.webstagesite.com/find-a-hospital" data-toggle="" data-target="">
+                                                Find A Hospital
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a data-panel="" href="http://ca.cm.qa.preview.vca.webstagesite.com/why-vca-canada" data-toggle="" data-target="">
+                                                Why VCA Canada
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a data-panel="" href="http://ca.cm.qa.preview.vca.webstagesite.com/in-the-community" data-toggle="" data-target="">
+                                                In The Community
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a data-panel="" href="http://ca.cm.qa.preview.vca.webstagesite.com/contact-us" data-toggle="" data-target="">
+                                                Contact Us
+                                            </a>
+                                        </li>
+
+                            </ul>
+                        </div>
+                        <div class="column utility">
+                            <ul>
+                                        <li>
+                                            <a data-panel="" href="http://ca.cm.qa.preview.vca.webstagesite.com/why-vca-canada" data-toggle="" data-target="" target="">
+                                                Why VCA Canada
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a data-panel="" href="http://ca.cm.qa.preview.vca.webstagesite.com/find-a-hospital" data-toggle="" data-target="" target="">
+                                                Find a Hospital
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a data-panel="" href="http://careers.vcacanada.com" data-toggle="" data-target="" target="_blank">
+                                                Careers
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a data-panel="" href="http://ca.cm.qa.preview.vca.webstagesite.com/in-the-community/paw-it-forward" data-toggle="" data-target="" target="">
+                                                Paw It Forward
+                                            </a>
+                                        </li>
+
+                            </ul>
+                        </div>
+                        <div class="column utility">
+                            <ul>
+                                        <li>
+                                            <a data-panel="emergency" href="#" class="emergency" data-toggle="" data-target="">
+                                                    <i class="fa fa-plus-square"></i>
+                                                Emergency
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a data-panel="search" href="#" class="search" data-toggle="" data-target="">
+                                                    <i class="fa fa-search"></i>
+                                                Search
+                                            </a>
+                                        </li>
+
+                            </ul>
+                        </div>
+
+            </div>
+        <div class="marketing">
+            <div class="logo">
+                    <a href="http://ca.cm.qa.preview.vca.webstagesite.com/">
+                        <img src="http://ca.cm.qa.preview.vca.webstagesite.com/-/media/vca-canada/images/global-images/185x53_vcaclogo.ashx?h=53&w=185&la=en&hash=1CA8CC937BD15CD2FBB47FC22059BB28FC2ACF25" alt="">
+                    </a>
+            </div>
+            <div class="social-links">
+                        <ul>
+                                    <li>
+                                        <a href="https://www.facebook.com/AssocVets" title="Go to our Facebook Page" target="_blank">
+
+                                            <i class="fa " + fa-facebook + "" role="presentation" aria-label="Go to our Facebook Page"></i>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="https://twitter.com/CanPetHealth" title="Go to our Twitter Page" target="_blank">
+
+                                            <i class="fa " + fa-twitter + "" role="presentation" aria-label="Go to our Twitter Page"></i>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="https://plus.google.com/106124253844881293142" title="" target="_blank">
+
+                                            <i class="fa " + fa-google-plus + "" role="presentation" aria-label=""></i>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="https://www.instagram.com/canpethealth/" title="" target="_blank">
+
+                                            <i class="fa " + fa-instagram + "" role="presentation" aria-label=""></i>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="https://www.linkedin.com/company-beta/1170256/" title="" target="_blank">
+
+                                            <i class="fa " + fa-linkedin + "" role="presentation" aria-label=""></i>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="http://portal.associatevets.com/Newsfeed/tabid/150/ctl/Login/Default.aspx?returnurl=%2f" title="" target="_blank">
+
+                                            <i class="fa " + fa-paw + "" role="presentation" aria-label=""></i>
+                                        </a>
+                                    </li>
+                        </ul>
+            </div>
+            <div class="privacy">
+                    <p>&copy;Copyright VCA Canada Hospitals all rights reserved.</p>
+                    <ul>
+                                <li>
+                                    <a href="http://ca.cm.qa.preview.vca.webstagesite.com/privacy-policy">Privacy Policy</a>
+                                </li>
+                                <li>
+                                    <a href="http://ca.cm.qa.preview.vca.webstagesite.com/terms-and-conditions">Terms</a>
+                                </li>
+                                <li>
+                                    <a href="http://ca.cm.qa.preview.vca.webstagesite.com/web-accessibility">Web Accessibility</a>
+                                </li>
+                    </ul>
+            </div>
+        </div>
+    </div>
+</div>
+</section>
+
+<script src="http://ca.cm.qa.preview.vca.webstagesite.com/Includes/_js/main.js?v=636610325320000000"></script>
+<script src="//www.google.com/recaptcha/api.js?onload=onloadRecaptcha&render=explicit" async defer></script>
+
+
+
+
+
+
+
+
+
+
+
+<script>
+//this needs to come from the CMS - used for filtering hospitals - already exists
+FindAHospitalSettings.HospitalTypes = [
+{
+  id: '16d0663f-0874-43e6-8511-481c0b8cef46',
+  text: 'All Hospitals',
+  badge: 'A'
+},
+{
+  id: 'f24ffaa3-babd-438f-a47a-e501ead66b43',
+  text: 'Primary Care',
+  badge: 'P'
+},
+{
+  id: '23ed4a38-36b9-4764-9a2d-21a542c711c8',
+  text: 'Specialty Care',
+  badge: 'S'
+},
+{
+  id: '1149c3f3-01c2-426f-8198-18582f89ebe2',
+  text: 'Emergency Care',
+  badge: 'E'
+},
+{
+  id: '676a3de6-1da1-4f0e-8808-05f2fd7d12af',
+  text: 'Boarding & Grooming',
+  badge: 'B'
+},
+{
+  id: '9ae50023-4f7c-44a4-bc67-4db786b75b0d',
+  text: 'Cat Only',
+  badge: 'C'
+}
+];
+
+//this needs to come from the back end - use VCA.Common.Constants.Settings.FindAHospital.AllHospitalsType
+FindAHospitalSettings.AllHospitalsType = '16d0663f-0874-43e6-8511-481c0b8cef46';
+
+//this needs to come from the CMS - used for suffixing the user's query to ensure that only canadian locations are displayed on the map
+FindAHospitalSettings.Country = 'Canada';
+
+//this needs to come from the CMS - used for the initial market to display 
+//the haversine function is used to calculate the smallest distance between each market and the user's geoip located lat lng
+//to hopefully display them an appropriate market when the page loads
+FindAHospitalSettings.UserLat = 43.639217;
+FindAHospitalSettings.UserLng = -79.400414;
+FindAHospitalSettings.MajorMarkets = [
+{
+  Name: 'Calgary, AB, Canada',
+  Latitude: 51.0501100,
+  Longitude: -114.0852900
+},
+{
+  Name: 'Edmonton, AB, Canada',
+  Latitude: 53.545883,
+  Longitude: -113.490112
+},
+{
+  Name: 'Vancouver, BC, Canada',
+  Latitude: 49.246292,
+  Longitude: -123.116226
+},
+{
+  Name: 'Victoria, BC, Canada',
+  Latitude: 48.407326,
+  Longitude: -123.329773
+},
+{
+  Name: 'London, ON, Canada',
+  Latitude: 42.988934,
+  Longitude: -81.248574
+},
+{
+  Name: 'Toronto, ON, Canada',
+  Latitude: 43.639217,
+  Longitude: -79.400414
+},
+{
+  Name: 'Ottawa, ON, Canada',
+  Latitude: 45.425533,
+  Longitude: -75.692482
+},
+{
+  Name: 'Saskatoon, SK, Canada',
+  Latitude: 52.132854,
+  Longitude: -106.631401
+}
+];
+</script>
+
+
+
+</body></html>
