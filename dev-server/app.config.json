@@ -1,0 +1,15 @@
+{
+    "apps" : [{
+      "name"        : "react-gmaps-prototype",
+      "script"      : "/webapp3/dev-server/stg-server.js",
+      "args"		  : "--host=https://vcacanada.com --provider=providers/fah/provider.js --port=3109",
+      "watch"       : ["/webapp3"],
+      "ignore_watch" : ["/webapp3/node_modules"],
+      "watch_options": {
+        "followSymlinks": false
+      },
+      "env": {
+        "NODE_ENV": "development"
+      }
+    }]
+  }
