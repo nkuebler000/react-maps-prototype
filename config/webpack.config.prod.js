@@ -6,6 +6,7 @@ const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const HtmlWebpackAlterHtmlPlugin = require('html-webpack-alter-html-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 const ManifestPlugin = require('webpack-manifest-plugin');
 const InterpolateHtmlPlugin = require('react-dev-utils/InterpolateHtmlPlugin');
 const SWPrecacheWebpackPlugin = require('sw-precache-webpack-plugin');
@@ -263,6 +264,13 @@ module.exports = {
       $(toRemove).remove();
       return $.html();
     }),
+    new CopyWebpackPlugin([
+      { from: 'dev-server/providers/fah/bootstrap.css', to: 'bootstrap.css' },
+      { from: 'dev-server/providers/fah/app.css', to: 'app.css' },
+      { from: 'dev-server/providers/fah/font-awesome.min.css', to: 'font-awesome.min.css' },
+      { from: 'dev-server/providers/fah/main.js', to: 'main.js' },
+      { from: 'fonts/font-awesome', to: 'fonts/font-awesome' }
+], { debug: true }),
     // Makes some environment variables available to the JS code, for example:
     // if (process.env.NODE_ENV === 'production') { ... }. See `./env.js`.
     // It is absolutely essential that NODE_ENV was set to production here.
