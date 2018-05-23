@@ -1,6 +1,6 @@
 React prototype of a veterinary hospital search page.
 
-<a href="https://react-gmaps-prototype.subsonic.us/" target="_blank">Live Demo</a>
+<a href="https://react-maps-prototype.subsonic.us/" target="_blank">Live Demo</a>
 
 ![Desktop Breakpoint](https://github.com/nkuebler000/react-maps-prototype/blob/master/desktop1.png)
 
